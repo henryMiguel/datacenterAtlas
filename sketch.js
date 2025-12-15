@@ -174,7 +174,7 @@ function preload() {
 
 // Setup function
 function setup() {
-  createCanvas(1450, 850);
+  createCanvas(1500, 800);
   
   // Define facts array
   facts = [
@@ -282,12 +282,12 @@ function createReferencesModal() {
   if (typeof createDiv !== 'undefined') {
     // Create modal
     refsModal = createDiv();
-    refsModal.position(width/2 - 350, height/2 - 250);
-    refsModal.size(700, 250);
+    refsModal.position(width/2 - 350, height/2 - 150);
+    refsModal.size(700, 325);
     refsModal.style('background-color', 'black');
     refsModal.style('color', 'white');
     refsModal.style('padding', '20px');
-    refsModal.style('border-radius', '10px');
+    //refsModal.style('border-radius', '10px');
     refsModal.style('box-shadow', '0 5px 30px rgba(0,0,0,0.3)');
     refsModal.style('z-index', '1000');
     refsModal.style('overflow-y', 'auto');
@@ -295,20 +295,22 @@ function createReferencesModal() {
     
     // Modal content
     refsModal.html(`
-      <h2 style="color: #e7e7e7ff; margin-top: 0; margin-left: 2rem; font-family:sans-serif;">References</h2>
+      <h2 style="color: #e7e7e7ff; margin-top: 0; margin-left: 2rem; font-family:sans-serif;">About</h2>
+      <h4 style="color: #e7e7e7ff; margin-top: 0; margin-left: 2rem; font-family:sans-serif;">The goal of this project is to interactively visualize some of the physical resources consumed by our ever growing, planetary scale computation machine. <br> <br>
+      Created by Henrique Miguel, 2025. For more information <a href="https://open.substack.com/pub/whollyother1/p/data-center-atlas?r=1r93m3&utm_campaign=post&utm_medium=web" target="_blank">click here.</a></h4>
       <div style="columns: 2; column-gap: 40px;">
         <ol style="margin-top: 0; color:white;">
-          <li><a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers" target="_blank">Data center investment projection</a></li>
-          <li><a href="https://seekingalpha.com/article/4845016-nvidia-4-trillion-plus-data-center-opportunity" target="_blank">NVIDIA revenue breakdown</a></li>
-          <li><a href="https://westwaterresearch.com/wp-content/uploads/2025/03/2025-Q2-Water-Market-Insider-Data-Centers.pdf" target="_blank">US data center regulation</a></li>
-          <li><a href="https://arxiv.org/pdf/2304.03271" target="_blank">AI water withdrawal projection</a></li>
-          <li><a href="https://www.energy.gov/articles/doe-announces-40-million-more-efficient-cooling-data-centers" target="_blank">Cooling energy usage</a></li>
-          <li><a href="https://dgtlinfra.com/data-center-water-usage/" target="_blank">Google data center water usage</a></li>
-          <li><a href="https://www.nature.com/articles/s41545-021-00101-w" target="_blank">Data center water footprint</a></li>
-          <li><a href="https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks" target="_blank">Water footprint components</a></li>
-          <li><a href="https://www.nature.com/articles/s41545-021-00101-w" target="_blank">Global Gallon usage per day</a></li>
-          <li><a href="https://www.cloudcomputing-news.net/news/data-centre-water-consumption-crisis/" target="_blank">Alternative water sources</a></li>
-          <li><a href="https://www.eesi.org/articles/view/data-centers-and-water-consumption" target="_blank">5 million gallons per day figure</a></li>
+          <li><a style="color: #e7e7e7ff" href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers" target="_blank">Data center investment projection</a></li>
+          <li><a style="color: #e7e7e7ff" href="https://seekingalpha.com/article/4845016-nvidia-4-trillion-plus-data-center-opportunity" target="_blank">NVIDIA revenue breakdown</a></li>
+          <li><a style="color: #e7e7e7ff" href="https://westwaterresearch.com/wp-content/uploads/2025/03/2025-Q2-Water-Market-Insider-Data-Centers.pdf" target="_blank">US data center regulation</a></li>
+          <li><a style="color: #e7e7e7ff" href="https://arxiv.org/pdf/2304.03271" target="_blank">AI water withdrawal projection</a></li>
+          <li><a style="color: #e7e7e7ff" href="https://www.energy.gov/articles/doe-announces-40-million-more-efficient-cooling-data-centers" target="_blank">Cooling energy usage</a></li>
+          <li><a style="color: #e7e7e7ff"  href="https://dgtlinfra.com/data-center-water-usage/" target="_blank">Google data center water usage</a></li>
+          <li><a style="color: #e7e7e7ff" href="https://www.nature.com/articles/s41545-021-00101-w" target="_blank">Data center water footprint</a></li>
+          <li><a style="color: #e7e7e7ff" href="https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks" target="_blank">Water footprint components</a></li>
+          <li><a style="color: #e7e7e7ff" href="https://www.nature.com/articles/s41545-021-00101-w" target="_blank">Global Gallon usage per day</a></li>
+          <li><a style="color: #e7e7e7ff" href="https://www.cloudcomputing-news.net/news/data-centre-water-consumption-crisis/" target="_blank">Alternative water sources</a></li>
+          <li><a style="color: #e7e7e7ff" href="https://www.eesi.org/articles/view/data-centers-and-water-consumption" target="_blank">5 million gallons per day figure</a></li>
         </ol>
       </div>
       <div style="text-align: left; margin-top: 20px; margin-left:2rem;">
