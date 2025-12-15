@@ -103,7 +103,7 @@ class Icon {
     let popupX = this.x + 180;
     let popupY = this.y + 50;
     let popupWidth = 340;
-    let popupHeight = 300;
+    let popupHeight = 340;
     
     // Check edges of sketch
     if (popupX + popupWidth / 2 > width) {
@@ -116,14 +116,16 @@ class Icon {
       popupY = popupHeight / 2;
     }
     
+    //draw background
     fill(0);
     rect(popupX, popupY, popupWidth, popupHeight);
     
+    //draw image
     if (this.factImage && this.factImage.width > 0) {
       imageMode(CENTER);
-      let imgWidth = min(this.factImage.width, 300);
+      let imgWidth = min(this.factImage.width, 340);
       let imgHeight = (imgWidth / this.factImage.width) * this.factImage.height;
-      image(this.factImage, popupX, popupY - 40, imgWidth, imgHeight);
+      image(this.factImage, popupX, popupY - 70, imgWidth, imgHeight);
     } else {
       fill(240);
       rect(popupX, popupY - 40, 140, 90, 5);
@@ -133,14 +135,15 @@ class Icon {
       text("Fact Image", popupX, popupY - 40);
     }
     
+    //draw text lower to avoid overlap
     fill(255);
-    textAlign(LEFT, CENTER);
+    textAlign(LEFT, TOP);
     if (itc) {
       textFont(itc);
     }
-    textSize(15);
-    textLeading(17);
-    text(this.fact, popupX, popupY + 80, popupWidth - 30, 100);
+    textSize(17);
+    textLeading(19);
+    text(this.fact, popupX, popupY + 110, popupWidth - 30, 100);
   }
 }
 
@@ -157,12 +160,13 @@ function preload() {
   backgroundPhotos.push(loadImage("data/backgroundImages/bg-08.jpg"));
   backgroundPhotos.push(loadImage("data/backgroundImages/bg-02.jpg"));
   backgroundPhotos.push(loadImage("data/backgroundImages/bg-09.jpg"));
+  backgroundPhotos.push(loadImage("data/backgroundImages/bg-10.jpg"));
   
   // Load droplet image
   dropletImage = loadImage("data/icons/drop.png");
   
   // Load all fact images
-  for (let i = 1; i <= 12; i++) {
+  for (let i = 1; i <= 15; i++) {
     let num = i < 10 ? '0' + i : i;
     factImages.push(loadImage("data/fact_images/fact_" + num + ".png"));
   }
@@ -175,17 +179,20 @@ function setup() {
   // Define facts array
   facts = [
     "It is estimated that by 2030, data centers are projected to require $6.7 trillion worldwide to keep pace with the demand for compute power.",
-    "88% of Nvidias revenue comes from data centers",
-    "In the USA, there is no regulatory requirement to register data centers, meaning site-specific power and water use data is often not published",
+    "88% of Nvidias revenue comes from data centers.",
+    "In the USA, there is no regulatory requirement to register data centers, meaning site-specific power and water use data is often not published.",
     "Water withdrawal of global AI is projected to reach 4.2 – 6.6 billion cubic meters by 2027, which is more than the total annual water withdrawal of 4-6 Denmarks or half of the United Kingdom.",
     "Data center cooling can account for up to 40% of data center energy usage overall.",
-    "Google's hyperscale data centers, which support its cloud regions and core products like Gmail, Google Drive, and YouTube, used an average of 2.1 million liters of water daily over the past year. This amount of water can fill an olympic sized pool every 1.2 days.",
+    "Google's hyperscale data centers, powering Gmail, Drive, and YouTube, used an average of 2.1 million liters of water daily over the past year. This amount of water can fill an olympic sized pool every 1.2 days.",
     "Data centers consume water both to produce the electricity they run on and to cool the heat their servers generate.",
     "A data center's water footprint includes on-site use, the water used by the power plants that supply its electricity, and the water consumed in making its processor chips.",
-    "Data centers use large amounts of water for their cooling systems, which include cooling towers, chillers, pumps, pipes, heat exchangers, condensers, and computer room air handler (CRAH) units",
+    "Data centers use large amounts of water for their cooling systems, which include cooling towers, chillers, pumps, pipes, heat exchangers, condensers, and computer room air handler (CRAH) units.",
     "Data centers are already responsible for around 0.6% of global greenhouse gas emissions and 1% of electricity use.",
     "Globally, data centers use 1.7 Billion gallons of water per day",
-    "Data centers are typically connected to municipal water systems, meaning they consume potable water—the same resource allocated for human consumption"
+    "Data centers are typically connected to municipal water systems, meaning they consume potable water—the same resource allocated for human consumption.",
+    "Alternative water sources (rainwater, reclaimed wastewater, graywater, desalinated) contribute less than 5% of a data center's total water supply.",
+    "Each cooling cycle concentrates scale-forming minerals (calcium, magnesium, and silica) in datacenter water, ultimately forcing a full water change.",
+    "Large data centers can consume up to 5 million gallons per day, equivalent to the water use of a town populated by 10,000 to 50,000 people."
   ];
   
   // RESIZE ALL BACKGROUND IMAGES TO SKETCH SIZE
@@ -290,19 +297,18 @@ function createReferencesModal() {
     refsModal.html(`
       <h2 style="color: #e7e7e7ff; margin-top: 0; margin-left: 2rem; font-family:sans-serif;">References</h2>
       <div style="columns: 2; column-gap: 40px;">
-        <ol style="margin-top: 0;">
-          <li><a href="https://example.com/source1" target="_blank">Data center investment projection</a></li>
-          <li><a href="https://example.com/source2" target="_blank">NVIDIA revenue breakdown</a></li>
-          <li><a href="https://example.com/source3" target="_blank">US data center regulation</a></li>
-          <li><a href="https://example.com/source4" target="_blank">AI water withdrawal projection</a></li>
-          <li><a href="https://example.com/source5" target="_blank">Cooling energy usage</a></li>
-          <li><a href="https://example.com/source6" target="_blank">Google data center water usage</a></li>
-          <li><a href="https://example.com/source7" target="_blank">Data center water footprint</a></li>
-          <li><a href="https://example.com/source8" target="_blank">Water footprint components</a></li>
-          <li><a href="https://example.com/source9" target="_blank">Cooling system components</a></li>
-          <li><a href="https://example.com/source10" target="_blank">Global emissions and electricity</a></li>
-          <li><a href="https://example.com/source11" target="_blank">Global daily water usage</a></li>
-          <li><a href="https://example.com/source12" target="_blank">Municipal water systems</a></li>
+        <ol style="margin-top: 0; color:white;">
+          <li><a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers" target="_blank">Data center investment projection</a></li>
+          <li><a href="https://seekingalpha.com/article/4845016-nvidia-4-trillion-plus-data-center-opportunity" target="_blank">NVIDIA revenue breakdown</a></li>
+          <li><a href="https://westwaterresearch.com/wp-content/uploads/2025/03/2025-Q2-Water-Market-Insider-Data-Centers.pdf" target="_blank">US data center regulation</a></li>
+          <li><a href="https://arxiv.org/pdf/2304.03271" target="_blank">AI water withdrawal projection</a></li>
+          <li><a href="https://www.energy.gov/articles/doe-announces-40-million-more-efficient-cooling-data-centers" target="_blank">Cooling energy usage</a></li>
+          <li><a href="https://dgtlinfra.com/data-center-water-usage/" target="_blank">Google data center water usage</a></li>
+          <li><a href="https://www.nature.com/articles/s41545-021-00101-w" target="_blank">Data center water footprint</a></li>
+          <li><a href="https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks" target="_blank">Water footprint components</a></li>
+          <li><a href="https://www.nature.com/articles/s41545-021-00101-w" target="_blank">Global Gallon usage per day</a></li>
+          <li><a href="https://www.cloudcomputing-news.net/news/data-centre-water-consumption-crisis/" target="_blank">Alternative water sources</a></li>
+          <li><a href="https://www.eesi.org/articles/view/data-centers-and-water-consumption" target="_blank">5 million gallons per day figure</a></li>
         </ol>
       </div>
       <div style="text-align: left; margin-top: 20px; margin-left:2rem;">
